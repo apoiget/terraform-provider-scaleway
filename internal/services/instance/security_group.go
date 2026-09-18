@@ -128,7 +128,7 @@ func ResourceInstanceSecurityGroupCreate(ctx context.Context, d *schema.Resource
 		Project:               types.ExpandStringPtr(d.Get("project_id")),
 		Description:           d.Get("description").(string),
 		Stateful:              d.Get("stateful").(bool),
-		ProjectDefault:        d.Get("project_default").(bool),
+		ProjectDefault:        types.ExpandBoolPtr(d.Get("project_default")),
 		InboundDefaultPolicy:  instanceSDK.SecurityGroupPolicy(d.Get("inbound_default_policy").(string)),
 		OutboundDefaultPolicy: instanceSDK.SecurityGroupPolicy(d.Get("outbound_default_policy").(string)),
 		EnableDefaultSecurity: types.ExpandBoolPtr(d.Get("enable_default_security")),
